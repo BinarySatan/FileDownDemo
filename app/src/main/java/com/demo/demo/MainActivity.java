@@ -67,6 +67,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+        unbindService(mConnection);
+        Intent intent = new Intent(this, MagaDownloadService.class);
+        stopService(intent);
     }
 
     @Override
